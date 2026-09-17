@@ -7,12 +7,20 @@
 </head>
 <body>
     <?php 
+        require('conexion.php');
+
+
     if($_SERVER["REQUEST_METHOD"] == "POST") { 
         $nombre = $_POST["nombre"];
         $correo = $_POST["email"];
         
-        //limpieza 
-        // DB
+        //limpieza de datos 
+
+        // crea registro en DB
+
+        $sql = "INSERT INTO personas (nombre,correo) 
+                VALUES ('$nombre' , '$correo')" ;
+            $conn->exec($sql);
 
         echo "<h2> Datos recibidos: </h2>";
         echo "<p> Nombre: " . $nombre . "</p>";
